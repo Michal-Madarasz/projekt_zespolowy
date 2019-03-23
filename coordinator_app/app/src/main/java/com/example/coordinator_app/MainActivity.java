@@ -5,9 +5,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Layout;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ViewFlipper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,10 +44,22 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        ViewFlipper vf = findViewById(R.id.layout_manager);
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch(id){
+            case R.id.action_bt:
+                vf.setDisplayedChild(1);
+                return true;
+            case R.id.action_victims:
+                vf.setDisplayedChild(2);
+                return true;
+            case R.id.action_rescuers:
+                vf.setDisplayedChild(3);
+                return true;
+            default:
+                vf.setDisplayedChild(0);
         }
+
 
         return super.onOptionsItemSelected(item);
     }
