@@ -20,14 +20,33 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+    <ViewFlipper
+        android:id="@+id/layout_manager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <include
+            android:id="@+id/include_main"
+            layout="@layout/content_main" />
+
+        <include
+            android:id="@+id/include_bt"
+            layout="@layout/bt_content_main" />
+
+        <include
+            android:id="@+id/include_victim"
+            layout="@layout/victim_content_main" />
+
+        <include
+            android:id="@+id/include_rescuers"
+            layout="@layout/rescuers_content_main" />
+
+    </ViewFlipper>
+    <!--
+    <include
+        android:id="@+id/displayed_layout"
+        layout="@layout/content_main" /> -->
 
 </android.support.design.widget.CoordinatorLayout>
