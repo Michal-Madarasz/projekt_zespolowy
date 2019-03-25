@@ -23,7 +23,6 @@ TODO: panel podsumowujący poszkodowanych
 
 public class MainActivity extends AppCompatActivity {
 
-    Victim asd = new Victim(1L, true, 20, 1.0f, true, Victim.AVPU.AWAKE);
     ArrayList<Victim> victims = new ArrayList<>();
     CustomAdapter customAdapter;
 
@@ -35,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         final ListView victimList = findViewById(R.id.victim_list);
-        victims.add(asd);
         customAdapter = new CustomAdapter(getApplicationContext(), victims);
         victimList.setAdapter(customAdapter);
 
