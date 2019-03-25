@@ -29,7 +29,7 @@
 
         <include
             android:id="@+id/include_main"
-            layout="@layout/content_main" />
+            layout="@layout/dashboard_content_main" />
 
         <include
             android:id="@+id/include_bt"
@@ -47,6 +47,6 @@
     <!--
     <include
         android:id="@+id/displayed_layout"
-        layout="@layout/content_main" /> -->
+        layout="@layout/dashboard_content_main" /> -->
 
 </android.support.design.widget.CoordinatorLayout>
