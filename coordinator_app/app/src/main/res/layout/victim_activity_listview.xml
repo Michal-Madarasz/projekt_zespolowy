@@ -17,7 +17,6 @@
         android:id="@+id/textView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="12pt" />
+        android:layout_gravity="center" />
 
 </android.support.v7.widget.LinearLayoutCompat>
