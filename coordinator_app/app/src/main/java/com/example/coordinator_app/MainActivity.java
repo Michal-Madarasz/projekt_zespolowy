@@ -11,8 +11,11 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<Victim> victims = new ArrayList<>();
     CustomAdapter customAdapter;
+    String[] triageSystems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +45,24 @@ public class MainActivity extends AppCompatActivity {
         customAdapter = new CustomAdapter(getApplicationContext(), victims);
         victimList.setAdapter(customAdapter);
 
+        //ikony klas w menu głównym
         ImageView imgV;
         imgV = findViewById(R.id.total_black).findViewById(R.id.label); imgV.setImageResource(R.color.colorTriageBlack);
         imgV = findViewById(R.id.total_red).findViewById(R.id.label); imgV.setImageResource(R.color.colorTriageRed);
         imgV = findViewById(R.id.total_yellow).findViewById(R.id.label); imgV.setImageResource(R.color.colorTriageYellow);
         imgV = findViewById(R.id.total_green).findViewById(R.id.label); imgV.setImageResource(R.color.colorTriageGreen);
 
+        //wypełnienie menu wyboru systemu do triage
+        Spinner dropdown = findViewById(R.id.classification_system_choice);
+        triageSystems = new String[]{"START/JumpSTART", "TRTS", "ISS", "BTTR"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, triageSystems);
+        dropdown.setAdapter(adapter); dropdown.getSelectedItem().toString();
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Losowa generacja pacjenta", Toast.LENGTH_LONG ).show();
+                Toast.makeText(getApplicationContext(), "Losowa generacja pacjenta", Toast.LENGTH_SHORT ).show();
                 Random r = new Random();
                 long imei = r.nextLong()%1000000000000000L;
                 boolean b = r.nextBoolean();
@@ -72,6 +83,22 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), VictimDetailsActivity.class);
                 intent.putExtra("victim", victims.get(position));
                 startActivity(intent);
+            }
+        });
+
+        Button btn = findViewById(R.id.classification_system_confirm);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Spinner spnr = findViewById(R.id.classification_system_choice);
+                int id = (int)spnr.getSelectedItemId();
+                switch(id){
+                    case 0:
+                        TextView t = view.findViewById(R.id.classification_system_val); t.setText("START");
+                        break;
+                    default:
+                        Toast.makeText(getApplicationContext(), "Wybrany system nie jest aktualnie zaimplementowany", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
