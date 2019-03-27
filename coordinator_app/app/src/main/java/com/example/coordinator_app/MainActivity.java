@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 int id = (int)spnr.getSelectedItemId();
                 switch(id){
                     case 0:
-                        TextView t = view.findViewById(R.id.classification_system_val); t.setText("START");
+                        TextView t = findViewById(R.id.classification_system_val); t.setText("START");
                         break;
                     default:
                         Toast.makeText(getApplicationContext(), "Wybrany system nie jest aktualnie zaimplementowany", Toast.LENGTH_SHORT).show();
