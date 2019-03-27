@@ -16,9 +16,12 @@
         android:id="@+id/action_victims"
         android:orderInCategory="3"
         android:title="@string/action_victims" />
+
     <item
         android:id="@+id/action_rescuers"
         android:orderInCategory="4"
+        android:visible="false"
         android:title="@string/action_rescuers" />
+
 
 </menu>
