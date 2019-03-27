@@ -23,9 +23,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /*
-TODO: panel zarządzania ratownikami
 TODO: obsługa bluetooth
-TODO: panel podsumowujący poszkodowanych
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -81,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), VictimDetailsActivity.class);
-                intent.putExtra("victim", victims.get(position));
+                intent.putExtra("victim", victims.get(position)); //sending victim data to new activity
                 startActivity(intent);
             }
         });
