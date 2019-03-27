@@ -23,9 +23,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /*
-TODO: panel zarządzania ratownikami
 TODO: obsługa bluetooth
-TODO: panel podsumowujący poszkodowanych
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -81,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), VictimDetailsActivity.class);
-                intent.putExtra("victim", victims.get(position));
+                intent.putExtra("victim", victims.get(position)); //sending victim data to new activity
                 startActivity(intent);
             }
         });
@@ -94,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 int id = (int)spnr.getSelectedItemId();
                 switch(id){
                     case 0:
-                        TextView t = view.findViewById(R.id.classification_system_val); t.setText("START");
+                        TextView t = findViewById(R.id.classification_system_val); t.setText("START");
                         break;
                     default:
                         Toast.makeText(getApplicationContext(), "Wybrany system nie jest aktualnie zaimplementowany", Toast.LENGTH_SHORT).show();
