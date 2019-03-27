@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.ViewFlipper;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -16,7 +17,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -65,22 +66,28 @@ public class MainActivity extends AppCompatActivity
 //        return super.onOptionsItemSelected(item);
 //    }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            Intent intent = new Intent(this, CoordinatorActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_gallery) {
-            Intent intent = new Intent(this, VictimActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_slideshow) {
+        ViewFlipper flipper = findViewById(R.id.layout_manager);
 
-        } else if (id == R.id.nav_manage) {
-
+        switch (id) {
+            case R.id.nav_coordinator:
+                flipper.setDisplayedChild(1);
+                return true;
+            case R.id.nav_victim:
+                flipper.setDisplayedChild(2);
+                return true;
+            case R.id.nav_status:
+                flipper.setDisplayedChild(0);
+                return true;
+            case R.id.nav_settings:
+//                flipper.setDisplayedChild(1);
+                return true;
+            default:
+                flipper.setDisplayedChild(0);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

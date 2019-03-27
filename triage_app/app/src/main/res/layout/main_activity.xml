@@ -9,9 +9,23 @@
     tools:openDrawer="start">
 
     <include
-        layout="@layout/app_bar_main"
+        layout="@layout/main_app_bar" />
+
+    <ViewFlipper
+        android:id="@+id/layout_manager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" >
+
+        <include
+            layout="@layout/main_content" />
+
+        <include
+            layout="@layout/coordinator_content" />
+
+        <include
+            layout="@layout/victim_content" />
+
+    </ViewFlipper>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
@@ -19,7 +33,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
+        app:headerLayout="@layout/main_nav_header"
         app:menu="@menu/activity_main_drawer" />
+
+
 
 </android.support.v4.widget.DrawerLayout>

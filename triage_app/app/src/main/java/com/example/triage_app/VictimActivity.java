@@ -65,21 +65,21 @@ public class VictimActivity extends AppCompatActivity
 //        return super.onOptionsItemSelected(item);
 //    }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_coordinator) {
             Intent intent = new Intent(this, CoordinatorActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_victim) {
             Intent intent = new Intent(this, VictimActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_status) {
+            Intent intent = new Intent(this, VictimActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_settings) {
 
         }
 
